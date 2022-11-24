@@ -7,8 +7,6 @@ const JWT_SECRET = process.env.JWT_KEY;
 
 const HASH_SALT_ROUNDS = 10;
 
-const compare = (password, hashed) => bcrypt.compare(password, hashed);
-
 const createToken = ({ id, email, login, isSuperUser }) => {
   return jwt.sign(
     {
