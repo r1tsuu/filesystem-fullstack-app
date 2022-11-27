@@ -9,13 +9,11 @@ router.post(
   async (req, res) => {
     console.log(req.headers);
     try {
-      const token = await UserService.register(req.body);
-      if (token) {
-        res.json({ token });
+      const user = await UserService.register(req.body);
+      if (user) {
+        res.json({ user });
       } else {
-        res.status(400).json({
-          error: "userDoesExist",
-        });
+        res.status(400).json("userDoesExist");
       }
     } catch (e) {
       res.status(500).end();
@@ -28,14 +26,12 @@ router.post(
   validationMiddleware(UserValidation.login),
   async (req, res) => {
     try {
-      const token = await UserService.login(req.body);
+      const user = await UserService.login(req.body);
 
-      if (token) {
-        res.json({ token });
+      if (user) {
+        res.json({ user });
       } else {
-        res.status(400).json({
-          error: "invalidCredentials",
-        });
+        res.status(400).json("invalidCredentials");
       }
     } catch (e) {
       res.status(500).end();

@@ -29,7 +29,17 @@ const swagger = {
             require: true,
             schema: {
               type: "object",
-              $ref: "#definitions/UserCredentials",
+              properties: {
+                login: {
+                  type: "string",
+                },
+                email: {
+                  type: "string",
+                },
+                password: {
+                  type: "string",
+                },
+              },
             },
           },
         ],
@@ -38,19 +48,14 @@ const swagger = {
             description: "OK",
             schema: {
               type: "object",
-              $ref: "#definitions/AuthToken",
+              $ref: "#definitions/UserWithToken",
             },
           },
           400: {
             description: "Error: User does already exist",
             schema: {
-              type: "object",
-              properties: {
-                error: {
-                  type: "string",
-                  default: "userDoesExist",
-                },
-              },
+              type: "string",
+              default: "userDoesExist",
             },
           },
         },
@@ -68,7 +73,14 @@ const swagger = {
             require: true,
             schema: {
               type: "object",
-              $ref: "#definitions/UserCredentials",
+              properties: {
+                email: {
+                  type: "string",
+                },
+                password: {
+                  type: "string",
+                },
+              },
             },
           },
         ],
@@ -77,19 +89,14 @@ const swagger = {
             description: "OK",
             schema: {
               type: "object",
-              $ref: "#definitions/AuthToken",
+              $ref: "#definitions/UserWithToken",
             },
           },
           400: {
             description: "Error: Invalid credentials",
             schema: {
-              type: "object",
-              properties: {
-                error: {
-                  type: "string",
-                  default: "invalidCredentials",
-                },
-              },
+              type: "string",
+              default: "invalidCredentials",
             },
           },
         },
@@ -98,23 +105,27 @@ const swagger = {
   },
 
   definitions: {
-    UserCredentials: {
+    UserWithToken: {
       properties: {
-        login: {
-          type: "string",
-        },
-        password: {
-          type: "string",
-        },
-        email: {
-          type: "string",
-        },
-      },
-    },
-    AuthToken: {
-      properties: {
-        token: {
-          type: "string",
+        user: {
+          type: "object",
+          properties: {
+            token: {
+              type: "string",
+            },
+            id: {
+              type: "number",
+            },
+            email: {
+              type: "string",
+            },
+            login: {
+              type: "string",
+            },
+            isSuperUser: {
+              type: "boolean",
+            },
+          },
         },
       },
     },

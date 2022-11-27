@@ -45,19 +45,29 @@ const register = async ({ login, password, email }) => {
   if (isUniqueUser) {
     const hashedPassword = await bcrypt.hash(password, HASH_SALT_ROUNDS);
 
-    const user = await User.create({
+    const isSuperUser = false;
+
+    const { id } = await User.create({
       email,
       login,
       password: hashedPassword,
-      isSuperUser: false,
+      isSuperUser,
     });
 
-    return createToken({
-      id: user.id,
+    const token = createToken({
+      id,
       login,
       email,
-      isSuperUser: false,
+      isSuperUser,
     });
+
+    return {
+      token,
+      id,
+      email,
+      login,
+      isSuperUser,
+    };
   }
 };
 
@@ -83,12 +93,20 @@ const login = async ({ email, password, login }) => {
     const isCorrectPassword = await bcrypt.compare(password, hashedPassword);
 
     if (isCorrectPassword) {
-      return createToken({
+      const token = createToken({
         id,
         email,
         login,
         isSuperUser,
       });
+
+      return {
+        token,
+        id,
+        email,
+        login,
+        isSuperUser,
+      };
     }
   }
 };
