@@ -1,6 +1,5 @@
 import { useUserAuth } from "@/contexts/UserAuth";
 import { Navigate } from "react-router-dom";
-import { routes } from "./routes";
 
 export const UserAuthRoute = ({
   children,
@@ -10,7 +9,7 @@ export const UserAuthRoute = ({
   const { user } = useUserAuth();
 
   if (!user) {
-    return <Navigate to={routes.login.path} />;
+    return <Navigate to="/login" />;
   }
 
   return children;

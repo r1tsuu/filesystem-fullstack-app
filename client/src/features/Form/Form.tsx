@@ -13,13 +13,12 @@ export const Form = <TFields extends FieldValues>({
   const { handleSubmit } = useFormContext<TFields>();
   return (
     <Box
+      minWidth={"600px"}
       borderRadius={3}
       border={({ palette }) => `1px solid ${palette.text.primary}`}
       boxShadow={"0 0px 20px rgb(0 0 0 / 20%)"}
       position="relative"
-      px={5}
-      pt={6}
-      pb={3}
+      p={6}
     >
       <Stack
         component="form"

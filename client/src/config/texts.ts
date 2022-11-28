@@ -11,7 +11,7 @@ export const PASSWORD_MATCHES =
 
 export const PASSWORD_CONFIRM_REQUIRED = "Please retype your password";
 
-export const PASSWORD_CONFIRM_MATCHES = "Your password don't match";
+export const PASSWORD_CONFIRM_MATCHES = "Your passwords don't match";
 
 export const LOGIN_REQUIRED = "Please enter your login";
 

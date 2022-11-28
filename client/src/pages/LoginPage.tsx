@@ -1,10 +1,10 @@
 import { FormPageWrapper } from "@/components/FormPageWrapper";
-import { LoginFormContainer } from "@/features/User/Login";
+import { LoginContainer } from "@/features/User/Login";
 
 const LoginPage = () => {
   return (
     <FormPageWrapper>
-      <LoginFormContainer />
+      <LoginContainer />
     </FormPageWrapper>
   );
 };

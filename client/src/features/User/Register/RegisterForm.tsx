@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 import * as texts from "@/config/texts";
 import * as regex from "@/utils/regex";
-import { RegisterBody } from "@/types/User";
+import { RegisterBody } from "./types";
 import {
   ControlledInput,
   FormLoadingProvider,
@@ -17,6 +17,7 @@ import {
 interface RegisterFormProps {
   onSubmit: (data: RegisterBody) => void;
   isLoading: boolean;
+  isUserExistsError: boolean;
 }
 
 const schema = yup.object().shape({
@@ -38,7 +39,11 @@ interface RegisterFormType extends RegisterBody {
   passwordConfirm: string;
 }
 
-export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
+export const RegisterForm = ({
+  onSubmit,
+  isLoading,
+  isUserExistsError,
+}: RegisterFormProps) => {
   const methods = useForm<RegisterFormType>({
     resolver: yupResolver(schema),
   });
@@ -47,7 +52,34 @@ export const RegisterForm = ({ onSubmit, isLoading }: RegisterFormProps) => {
     <FormProvider {...methods}>
       <FormLoadingProvider isLoading={isLoading}>
         <Form onSubmit={onSubmit} title="Sign up">
-          <div />
+          <ControlledInput label="Login" name="login" />
+          <ControlledInput label="Email" inputType="email" name="email" />
+          <ControlledInput
+            label="Password"
+            inputType="password"
+            name="password"
+          />
+          <ControlledInput
+            label="Confirm password"
+            inputType="password"
+            name="passwordConfirm"
+          />
+          <SubmitButton>Sign up</SubmitButton>
+          {isUserExistsError && (
+            <Alert
+              sx={{
+                textAlign: "center",
+                ".MuiAlert-icon": {
+                  alignItems: "center",
+                },
+              }}
+              severity="error"
+            >
+              <Typography variant="subtitle1">
+                The email or login already exists.
+              </Typography>
+            </Alert>
+          )}
         </Form>
       </FormLoadingProvider>
     </FormProvider>

@@ -10,7 +10,7 @@ export const ControlledInput = ({
 }: {
   name: string;
   label: string;
-  inputType: "email" | "password" | "text";
+  inputType?: "email" | "password" | "text";
   isRequired?: boolean;
 }) => {
   const isLoading = useIsFormLoading();

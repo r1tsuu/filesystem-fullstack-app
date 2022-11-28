@@ -1,6 +1,5 @@
 import { useUserAuth } from "@/contexts/UserAuth";
 import { Navigate } from "react-router-dom";
-import { routes } from "./routes";
 
 export const SuperUserAuthRoute = ({
   children,
@@ -9,9 +8,9 @@ export const SuperUserAuthRoute = ({
 }) => {
   const { user } = useUserAuth();
 
-  if (user === null) return <Navigate to={routes.login.path} />;
+  if (user === null) return <Navigate to="/login" />;
 
-  if (!user.isSuperUser) return <Navigate to={routes.home.path} />;
+  if (!user.isSuperUser) return <Navigate to="/" />;
 
   return children;
 };

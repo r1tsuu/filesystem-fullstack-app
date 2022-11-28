@@ -1,15 +1,6 @@
-import { RegisterBody, User, LoginBody } from "../../types/User";
-import { isAxiosError, post } from "./client";
-
-type RegisterResponse =
-  | {
-      user: User;
-    }
-  | "userDoesExist";
-
-export const register = (body: RegisterBody) => {
-  return post<RegisterResponse>(`/user/register`, body);
-};
+import { User } from "@/types/User";
+import { post, isAxiosError } from "@/config/http";
+import { LoginBody } from "./types";
 
 type LoginResponse = {
   user: User;

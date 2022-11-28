@@ -79,6 +79,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "react-app-rewired": "^2.2.1",
+    "react-query-devtools": "^2.6.3",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "webpack": "^5.75.0"
   }

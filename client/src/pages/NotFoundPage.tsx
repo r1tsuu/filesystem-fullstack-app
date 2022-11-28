@@ -1,5 +1,4 @@
 import { useUserAuth } from "@/contexts/UserAuth";
-import { Link } from "react-router-dom";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 const NotFoundPage = () => {
@@ -20,11 +19,20 @@ const NotFoundPage = () => {
         textAlign="center"
         spacing={3}
       >
-        <Typography fontSize={"14rem"} variant="h1">
+        <Typography
+          fontWeight="bold"
+          color={({ palette }) => palette.primary.dark}
+          fontSize={"14rem"}
+          variant="h1"
+        >
           404
         </Typography>
         <Typography variant="h2">Page not found</Typography>
-        {!user && (
+        {user ? (
+          <Button variant="contained" href="/">
+            Go to home
+          </Button>
+        ) : (
           <Box display="grid" gridTemplateColumns="1fr 1fr" gap={3}>
             <Button href="/login" variant="contained">
               Log in
