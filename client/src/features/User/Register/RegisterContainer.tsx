@@ -1,9 +1,9 @@
 import { useMutation } from "react-query";
 import { useEffect, useState } from "react";
 import { useUserAuth } from "@/contexts/UserAuth";
-import { register } from "./RegisterService";
 import { RegisterForm } from "./RegisterForm";
 import { RegisterSuccess } from "./RegisterSuccess";
+import { register } from "@/services/UserService";
 
 export const RegisterContainer = () => {
   const {

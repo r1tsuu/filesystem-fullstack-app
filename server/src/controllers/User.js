@@ -13,7 +13,7 @@ router.post(
       if (user) {
         res.json({ user });
       } else {
-        res.status(400).json("userDoesExist");
+        res.status(201).json({ error: "userDoesExist" });
       }
     } catch (e) {
       res.status(500).end();
@@ -31,7 +31,7 @@ router.post(
       if (user) {
         res.json({ user });
       } else {
-        res.status(400).json("invalidCredentials");
+        res.status(201).json({ error: "invalidCredentials" });
       }
     } catch (e) {
       res.status(500).end();

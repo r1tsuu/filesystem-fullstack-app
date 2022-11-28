@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { login } from "./LoginService";
 import { useUserAuth } from "@/contexts/UserAuth";
 import { LoginForm } from "./LoginForm";
 import { useMutation } from "react-query";
+import { login } from "@/services/UserService";
 
 export const LoginContainer = () => {
   const { setUser } = useUserAuth();

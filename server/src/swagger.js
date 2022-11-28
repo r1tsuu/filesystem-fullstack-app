@@ -51,11 +51,16 @@ const swagger = {
               $ref: "#definitions/UserWithToken",
             },
           },
-          400: {
+          201: {
             description: "Error: User does already exist",
             schema: {
-              type: "string",
-              default: "userDoesExist",
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  default: "userDoesExist",
+                },
+              },
             },
           },
         },
@@ -92,11 +97,16 @@ const swagger = {
               $ref: "#definitions/UserWithToken",
             },
           },
-          400: {
+          201: {
             description: "Error: Invalid credentials",
             schema: {
-              type: "string",
-              default: "invalidCredentials",
+              type: "object",
+              properties: {
+                error: {
+                  type: "string",
+                  default: "invalidCredentials",
+                },
+              },
             },
           },
         },

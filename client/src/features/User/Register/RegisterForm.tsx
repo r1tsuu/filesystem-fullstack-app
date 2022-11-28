@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 import * as texts from "@/config/texts";
 import * as regex from "@/utils/regex";
-import { RegisterBody } from "./types";
+import { RegisterBody } from "@/types/User";
 import {
   ControlledInput,
   FormLoadingProvider,

@@ -1,13 +1,7 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { User } from "@/types/User";
 
 const API_BASE_URL = "http://localhost:5000/api";
-
-export function isAxiosError<ResponseType>(
-  error: unknown
-): error is AxiosError<ResponseType> {
-  return axios.isAxiosError(error);
-}
 
 const client = axios.create({
   baseURL: API_BASE_URL,
